@@ -85,7 +85,7 @@ const Page = () => {
                   <div className='space-y-2 sm:flex justify-between items-center'>
                     <div>
                     <p className="text-xl font-semibold">Cost: ${item.price * (cartItem?.quantity || 1)}</p>
-                      <p>color: {cart[index].color}</p>
+                      <p>color: {cart[index]?.color}</p>
                     </div>
                     <div className="flex text-2xl items-center bg-gray-200 rounded-full py-1 px-2 sm:py-2 sm:px-6 gap-2 sm:gap-6 w-[120px] justify-between">
                       <button onClick={() => updateQuantity(item._id, false)}>-</button>
