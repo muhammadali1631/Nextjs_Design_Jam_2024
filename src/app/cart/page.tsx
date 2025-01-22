@@ -71,7 +71,7 @@ const Page = () => {
         <div className="flex flex-col gap-6 border mb-10 rounded-xl ml-1 w-[700px] sm:p-5 p-2">
          {Products.length > 0 ? Products.map((item, index) => {
             const cartItem = cart.find((cartItem) => cartItem.id === item._id);
-            const filterImage = item.images.filter((item) => item.color === cart[index]?.color)[0]
+            const filterImage = item?.images.filter((item) => item.color === cart[index]?.color)[0]
             return (
               <div key={index} className={`flex gap-4 border-b-2 py-2 ${index === Products.length - 1 ? 'border-b-0' : 'border-b-2'}`}>
                 <Link href={`shop/${item.slug}`}>
