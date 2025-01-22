@@ -1,10 +1,11 @@
-// src/app/submitorder/page.tsx
 "use client";
-
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import * as Yup from "yup";
+import { v4 as uuidv4 } from 'uuid';
 import { yupResolver } from "@hookform/resolvers/yup";
+import { client } from "@/sanity/lib/client";
+import { useUser } from "@clerk/nextjs";
 
 type OrderFormValues = {
   fullName: string;
@@ -16,7 +17,8 @@ type OrderFormValues = {
 };
 
 const OrderForm = () => {
-  // Validation schema
+  const { user } = useUser();
+  const uniqueId = uuidv4();
   const validationSchema = Yup.object().shape({
     fullName: Yup.string()
       .min(3, "Full Name must be at least 3 characters")
@@ -42,10 +44,28 @@ const OrderForm = () => {
   } = useForm<OrderFormValues>({
     resolver: yupResolver(validationSchema),
   });
+  const sentOrder = (data:OrderFormValues)=>{
+    const cartData = localStorage.getItem('cartItem');
+    const products = cartData ? JSON.parse(cartData) : [];
+
+    const newDocument = {
+      _type: 'order', 
+      userId: user?.id,
+      orderId: uniqueId,
+      details: data,
+      products: products
+    };
+    
+    client
+      .create(newDocument).then((res) => {
+        console.log('Document updated:', res);
+      })
+    localStorage.setItem("cartItem", JSON.stringify([]))
+  }
 
   const onSubmit: SubmitHandler<OrderFormValues> = (data) => {
-    console.log("Order submitted", data);
     alert("Order submitted successfully!");
+    sentOrder(data)
     reset();
   };
 
@@ -146,7 +166,7 @@ const OrderForm = () => {
           <div>
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+              className="w-full bg-black text-white p-2 rounded-xl"
             >
               Submit Order
             </button>
