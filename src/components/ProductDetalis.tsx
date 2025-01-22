@@ -6,6 +6,7 @@ import { FaStarHalf } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
 import CartIcon from "./CartIcon";
 import { ProductType } from "@/types/productTypes";
+import { IconType } from "react-icons";
 // import ProductType from "@/Types/product";
 const ProductDetails = ({ product }: {product: ProductType}) => {
   const [color, setColor] = useState(product.images[0].color);
@@ -50,7 +51,7 @@ const ProductDetails = ({ product }: {product: ProductType}) => {
           <div className="flex gap-1">
             {Array(Number(product.rating?.toString().charAt(0)))
               .fill(FaStar)
-              .map((Icon: any, index: number) => (
+              .map((Icon: IconType, index: number) => (
                 <Icon key={index} className="text-yellow-500" />
               ))}{" "}
             {product.rating?.toString().charAt(2) !== "0" && (

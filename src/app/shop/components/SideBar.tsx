@@ -75,8 +75,8 @@ const SideBar = ({open, toggleBtn, setTag}: {open?:string, toggleBtn?:()=>void, 
           </div>
         <ul className='py-3 space-y-2'>
           {dresses.map((item, index) =>(
-          <Link href={item.link}>
-            <li key={index} className='text-gray-400 flex justify-between items-center my-3'><span>{item.name}</span> <IoIosArrowForward/></li>
+          <Link key={index} href={item.link}>
+            <li className='text-gray-400 flex justify-between items-center my-3'><span>{item.name}</span> <IoIosArrowForward/></li>
           </Link>
           ))}
         </ul>

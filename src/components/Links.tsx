@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const Links = ({props}: {props: any}) => {
+const Links = ({props}: {props:{heading:string, Links:string[]}}) => {
   return (
     <div>
         <h3 className="text-xl font-semibold">{props.heading}</h3>

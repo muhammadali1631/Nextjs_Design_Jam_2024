@@ -8,7 +8,7 @@ import { IoMenu } from "react-icons/io5";
 import logo from '@/images/logo.png'
 import { RxCross2 } from "react-icons/rx";
 import SearchBar from './SearchBar';
-import { SignedOut, UserButton } from '@clerk/nextjs';
+import { UserButton } from '@clerk/nextjs';
 import TopBanner from './TopBanner';
 
 const Header = () => {

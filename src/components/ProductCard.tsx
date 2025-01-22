@@ -1,10 +1,11 @@
 import { urlFor } from '@/sanity/lib/image'
+import { ProductType } from '@/types/productTypes'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { FaStar, FaStarHalf } from 'react-icons/fa6'
 
-const ProductCard = ({product, from}: {product: any, from?: string}) => {
+const ProductCard = ({product, from}: {product: ProductType, from?: string}) => {
   return (
     <div className='group'>
       <Link href={`/shop/${product.slug}`}>

@@ -4,10 +4,12 @@ import "rc-slider/assets/index.css";
 import { useState } from "react";
 
 export default function Range() {
-  const [range, setRange] = useState([200, 350]);
+  const [range, setRange] = useState<number[]>([200, 350]);
 
-  const handleChange = (newRange: any) => {
-    setRange(newRange);
+  const handleChange = (value: number | number[]) => {
+    if (Array.isArray(value)) {
+      setRange(value);
+    }
   };
 
   return (
