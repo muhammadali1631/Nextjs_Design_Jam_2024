@@ -71,11 +71,11 @@ const Page = () => {
         <div className="flex flex-col gap-6 border mb-10 rounded-xl ml-1 w-[700px] sm:p-5 p-2">
          {Products.length > 0 ? Products?.map((item, index) => {
             const cartItem = cart.find((cartItem) => cartItem.id === item._id);
-            const filterImage = item?.images.filter((item) => item.color === cart[index]?.color)[0]
+            // const filterImage = item?.images.filter((item) => item.color === cart[index]?.color)[0]
             return (
               <div key={index} className={`flex gap-4 border-b-2 py-2 ${index === Products.length - 1 ? 'border-b-0' : 'border-b-2'}`}>
                 <Link href={`shop/${item.slug}`}>
-                  <Image src={urlFor(filterImage?.image[0]).url()} height={112} width={112} alt={item.name} className="w-24 sm:w-28 sm:h-28 border rounded object-cover" />
+                  <Image src={urlFor(item.images[0].image[0]).url()} height={112} width={112} alt={item.name} className="w-24 sm:w-28 sm:h-28 border rounded object-cover" />
                 </Link>
                 <div className="flex-1">
                   <h2 className="flex text-md sm:text-lg font-semibold justify-between line-clamp-2">
