@@ -3,6 +3,7 @@ import { ProductType } from '@/types/productTypes'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { IconType } from 'react-icons'
 import { FaStar, FaStarHalf } from 'react-icons/fa6'
 
 const ProductCard = ({product, from}: {product: ProductType, from?: string}) => {
@@ -14,7 +15,7 @@ const ProductCard = ({product, from}: {product: ProductType, from?: string}) => 
         </div>
         <h3 className={` font-bold line-clamp-2 mt-4 ml-2 ${from === 'casual'? 'text-lg w-[130px] sm:w-[85%]': 'text-xl w-[85%]' }`}>{product.name}</h3>
         <div className='space-y-1 flex items-center gap-1 ml-2 '>
-            <div className='flex gap-1'>{Array(Number(product.rating?.toString().charAt(0))).fill(FaStar).map((Icon:any, index:number) => (<Icon key={index} className='text-yellow-500'/>))} {product.rating?.toString().charAt(2) !== '0' && (<FaStarHalf className='text-yellow-500'/>)}</div>
+            <div className='flex gap-1'>{Array(Number(product.rating?.toString().charAt(0))).fill(FaStar).map((Icon:IconType, index:number) => (<Icon key={index} className='text-yellow-500'/>))} {product.rating?.toString().charAt(2) !== '0' && (<FaStarHalf className='text-yellow-500'/>)}</div>
             <p>{product.rating}<span className='text-gray-500 mx-[1px]'>/5</span></p>
         </div>
         <div className={`flex gap-2 ml-2 ${from === 'casual' &&' sm:gap-[1px] sm:ml-0'}`}>
