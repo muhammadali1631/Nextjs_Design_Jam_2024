@@ -26,12 +26,16 @@ const CartIcon = ({ id, quantity, color, add }: Props) => {
       setCart(JSON.parse(storedCart));
     }
   }, []);
+  useEffect(() => {
+    if (cart.length !== 0) {
+    localStorage.setItem("cartItem", JSON.stringify(cart));
+    }
+  }, [cart]);
 
   
 
   const addCart = ({ id, quantity, color }: Props) => {
     const existingItem = cart.find((item) => item.id === id);
-
     if (existingItem) {
       setCart(
         cart.map((item) =>
@@ -40,16 +44,15 @@ const CartIcon = ({ id, quantity, color, add }: Props) => {
             : item
         )
       );
+
     } else {
       setCart([...cart, { id, quantity, color }]);
     }
-    localStorage.setItem("cartItem", JSON.stringify(cart));
   };
 
   const delCart = (id: string) => {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
-    localStorage.setItem("cartItem", JSON.stringify(cart));
     if(updatedCart.length === 0){
       localStorage.setItem("cartItem", JSON.stringify([]));
     }
@@ -69,15 +72,10 @@ const CartIcon = ({ id, quantity, color, add }: Props) => {
         </button>
       ) : (
         <div className="p-2 bg-white rounded-full cursor-pointer">
-          {isInCart ? (
+          {isInCart && (
             <TbShoppingBagCheck
               onClick={() => delCart(id)}
-              className="text-2xl"
-            />
-          ) : (
-            <AiOutlineShopping
-              onClick={() => addCart({ id, quantity, color })}
-              className="text-2xl"
+              className="text-2xl text-black"
             />
           )}
         </div>

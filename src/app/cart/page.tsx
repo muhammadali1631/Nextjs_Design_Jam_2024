@@ -17,20 +17,19 @@ const Page = () => {
     const storedCart = localStorage.getItem("cartItem");
     if (storedCart) {
       setCart(JSON.parse(storedCart));
-      console.log(storedCart)
     }
   }, []);
 
   useEffect(() => {
     if (cart.length !== 0) {
       localStorage.setItem("cartItem", JSON.stringify(cart));
+    }else{
+      setProducts([])
     }
     const getProduct = async () => {
       const product: ProductType[] = await client.fetch(`*[_type == 'products']`);
-      console.log(product)
       const filteredProducts = product.filter((item) => cart.some((cartItem) => cartItem.id === item._id));
       setProducts(filteredProducts);
-      console.log(filteredProducts)
     };
     getProduct();
   }, [cart]);
@@ -40,6 +39,7 @@ const Page = () => {
     setCart(updatedCart);
     if (updatedCart.length === 0) {
       localStorage.setItem("cartItem", JSON.stringify([]));
+      setProducts([]);
     }
   };
 
@@ -69,9 +69,9 @@ const Page = () => {
 
       <div className="flex justify-around flex-wrap gap-5">
         <div className="flex flex-col gap-6 border mb-10 rounded-xl ml-1 w-[700px] sm:p-5 p-2">
-         {Products.length > 0 ?Products.map((item, index) => {
+         {Products.length > 0 ? Products.map((item, index) => {
             const cartItem = cart.find((cartItem) => cartItem.id === item._id);
-            const filterImage = item.images.filter((item) => item.color === cart[index].color)[0]
+            const filterImage = item.images.filter((item) => item.color === cart[index]?.color)[0]
             return (
               <div key={index} className={`flex gap-4 border-b-2 py-2 ${index === Products.length - 1 ? 'border-b-0' : 'border-b-2'}`}>
                 <Link href={`shop/${item.slug}`}>
@@ -80,7 +80,7 @@ const Page = () => {
                 <div className="flex-1">
                   <h2 className="flex text-md sm:text-lg font-semibold justify-between line-clamp-2">
                     {item.name}
-                    <RiDeleteBin6Fill className='text-red-600 text-2xl sm:text-3xl w-10' onClick={() => delCart(item._id)} />
+                    <RiDeleteBin6Fill className='text-black text-2xl sm:text-3xl w-10' onClick={() => delCart(item._id)} />
                   </h2>
                   <div className='space-y-2 sm:flex justify-between items-center'>
                     <div>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React, { useState } from 'react'
 import { FiShoppingCart, FiUser } from "react-icons/fi";
 // import { IoIosArrowDown } from "react-icons/io";
+import { useUser } from "@clerk/nextjs"
 import { IoMenu } from "react-icons/io5";
 import logo from '@/images/logo.png'
 import { RxCross2 } from "react-icons/rx";
@@ -15,6 +16,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [attr, setAttr] = useState('hidden')
   const [attr2, setAttr2] = useState('block')
+  const { isSignedIn } = useUser();
 
   const handleToggle = () => {
     setAttr(isOpen? 'hidden' : 'block')
@@ -86,8 +88,8 @@ const Header = () => {
         </Link>
 
         <Link href="/orders" className="hover:text-gray-500">
-        
-          <FiUser size={20} />
+        {!isSignedIn && <FiUser size={20} />}
+          
         
         </Link>
         <UserButton/>
