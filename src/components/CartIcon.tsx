@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { AiOutlineShopping } from "react-icons/ai";
 import { TbShoppingBagCheck } from "react-icons/tb";
 
 interface Props {
