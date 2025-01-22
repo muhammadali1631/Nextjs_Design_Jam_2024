@@ -51,7 +51,7 @@ const Header = () => {
           </Link>
         </li>
         <li>
-          <Link href="#" className="hover:text-gray-500">
+          <Link href="/orders" className="hover:text-gray-500">
             Orders
           </Link>
         </li>
@@ -74,7 +74,7 @@ const Header = () => {
           </Link>
         </li>
         <li>
-          <Link href="#" className="hover:text-gray-500">
+          <Link href="/orders" className="hover:text-gray-500">
             Orders
           </Link>
         </li>

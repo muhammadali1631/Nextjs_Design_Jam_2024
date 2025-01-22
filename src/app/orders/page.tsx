@@ -14,23 +14,33 @@ const Page = () => {
   }
   fetchData()
   return (
-    <div className='container mx-auto'>
-      <div className='flex justify-between bg-gray-200 py-3'>
-        <p>Order Id</p> 
-        <p>Date</p>
-        <p>Status</p>
-        <p>Items</p>
-      </div>
-      {Data.map((item)=>(
-        <div key={item.orderId} className='flex justify-between'>
-          <p className='w-[100px]'>{item.orderId}</p> 
-        <p>{item._createdAt}</p>
-        <p className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-fullbg-yellow-100 text-yellow-800`}>
-        processing
-        </p>
-        <p>{Data.length}</p>
-        </div>
-      ))}
+    <div className='container mx-auto my-5'>
+      <table className='table-auto w-full border-collapse border border-gray-300'>
+        <thead className='bg-gray-200'>
+          <tr>
+            <th className='border border-gray-300 px-4 py-2 text-left'>Order Id</th>
+            <th className='border border-gray-300 px-4 py-2 text-left'>Date</th>
+            <th className='border border-gray-300 px-4 py-2 text-left'>Status</th>
+            <th className='border border-gray-300 px-4 py-2 text-left'>Items</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Data.map((item) => (
+            <tr key={item.orderId}>
+              <td className='border border-gray-300 px-4 py-2'>{item.orderId}</td>
+              <td className='border border-gray-300 px-4 py-2'>{item._createdAt}</td>
+              <td className='border border-gray-300 px-4 py-2'>
+                <span
+                  className={`px-2 inline-flex leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800`}
+                >
+                  Processing
+                </span>
+              </td>
+              <td className='border border-gray-300 px-4 py-2'>{Data.length}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
