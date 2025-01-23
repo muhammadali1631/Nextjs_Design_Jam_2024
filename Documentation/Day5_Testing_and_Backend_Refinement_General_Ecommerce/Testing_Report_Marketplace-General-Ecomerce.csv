@@ -20,7 +20,7 @@ TC005,Verify cart operations,"1. Add items to cart.
 TC006,Verify checkout process,"1. Proceed to checkout.
 2. Enter Shipping Details.
 3. Confirm.",Order placed successfully.,"Order will not placed.
-(currenttly)",Passed,Medium,-,Need optimization.
+(currenttly)",Failed,Medium,-,Need optimization.
 TC007,Validate responsiveness on mobile,"1. Open site on mobile. 
 2. Interact with features.",All features responsive.,All features responsive.,Passed,High,-,None
 TC008,Test product search functionality,"1. Search for a product. 
