@@ -14,8 +14,8 @@ const Page = () => {
   }
   fetchData()
   return (
-    <div className='container mx-auto my-5'>
-      <table className='table-auto w-full border-collapse border border-gray-300'>
+    <div className='container mx-auto my-5 overflow-x-scroll min-h-screen'>
+      {Data ? <table className='table-auto w-full border-collapse border border-gray-300'>
         <thead className='bg-gray-200'>
           <tr>
             <th className='border border-gray-300 px-4 py-2 text-left'>Order Id</th>
@@ -40,7 +40,7 @@ const Page = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> : <h3 className='text-center text-2xl'>No Order Found </h3>}
     </div>
   )
 }
