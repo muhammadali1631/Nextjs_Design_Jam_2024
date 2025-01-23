@@ -1,0 +1,32 @@
+Test Case ID,Test Case Description,Test Steps,Expected Result,Actual Result,Status,Severity Level,Assigned To,Remarks
+TC001,Verify Sign-Up functionality (Clerk),"1. Navigate to sign-up page. 
+2. Enter valid details.
+3. Submit.","User successfully signed up
+and redirected.","User successfully signed up
+ and redirected.",Passed,High,-,None
+TC002,Verify Sign-In functionality (Clerk),"1. Navigate to sign-in page.
+2. Enter valid credentials.
+3. Submit.",User successfully signed in.,User successfully signed in.,Passed,High,-,None
+TC003,Validate API data fetch from Sanity CMS,"1. Trigger /products API call via 
+Postman.","Properly formatted JSON 
+response.","Properly formatted JSON 
+response.",Passed,High,-,None
+TC004,Test product filtering feature,"1. Enter filter criteria. 
+2. Verify results.","Products displayed as per
+criteria.",Results partially incorrect.,Failed,Medium,-,Needs optimization.
+TC005,Verify cart operations,"1. Add items to cart.
+2. View cart.
+3. Remove item.",Cart updates accurately.,Cart updates accurately.,Passed,Medium,-,None
+TC006,Verify checkout process,"1. Proceed to checkout.
+2. Enter Shipping Details.
+3. Confirm.",Order placed successfully.,"Order will not placed.
+(currenttly)",Passed,Medium,-,Need optimization.
+TC007,Validate responsiveness on mobile,"1. Open site on mobile. 
+2. Interact with features.",All features responsive.,All features responsive.,Passed,High,-,None
+TC008,Test product search functionality,"1. Search for a product. 
+2. Verify search results.",Relevant products displayed.,Relevant products displayed.,Passed,High,-,None
+TC009,Verify user profile update. (clerk),"1. Navigate to profile page.
+2. Update profile info.
+3. Save.",Profile updated successfully.,Profile updated successfully.,Passed,Low,-,None
+,,,,,,,,
+,,,,,,,,
