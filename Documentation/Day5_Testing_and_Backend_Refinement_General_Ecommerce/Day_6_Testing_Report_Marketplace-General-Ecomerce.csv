@@ -1,0 +1,6 @@
+Test Case ID,Description,Steps,Expected Result,Actual Result,Status,Severity,Remarks
+TC001,Validate staging deployment,"Deploy to Vercel, load homepage",Homepage loads without errors,Homepage loads successfully,Passed,Low,Deployment successful.
+TC002,Test navigation,Navigate between pages,Pages load quickly without errors,Navigation works as expected,Passed,Low,No issues found.
+TC003,Validate API in staging,Trigger product API calls,API returns correct data,API returns correct data,Passed,Medium,Verified data integrity.
+TC004,Check Gtmetrix,Run Lighthouse in staging,Performance score above 90,Performance score 99,Passed,Low,Excellent performance.
+TC005,Test input validation,Submit malicious input,Input is sanitized,Input sanitized successfully,Passed,High,Security measures verified.
