@@ -119,7 +119,7 @@ const ProductDetails = ({ product }: {product: ProductType}) => {
             <p>{count}</p>
             <button onClick={() => setCount(count + 1)}>+</button>
           </div>
-          <CartIcon id={product._id} color={color} quantity={count} add="yes"/>
+          <CartIcon id={product._id} color={color} price={product.discountPercent? product.price - (product.price * product.discountPercent) /100: product.price} quantity={count} add="yes"/>
         </div>
       </div>
     </div>

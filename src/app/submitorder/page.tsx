@@ -53,7 +53,8 @@ const OrderForm = () => {
       userId: user?.id,
       orderId: uniqueId,
       details: data,
-      products: products
+      products: products,
+      status: 'proccessing',
     };
     
     client

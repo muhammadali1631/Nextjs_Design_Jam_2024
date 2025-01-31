@@ -10,7 +10,7 @@ import { urlFor } from '@/sanity/lib/image';
 import Link from 'next/link';
 
 const Page = () => {
-  const [cart, setCart] = useState<{ id: string; quantity: number; color: string }[]>([]);
+  const [cart, setCart] = useState<{ id: string; quantity: number; color: string, price: number }[]>([]);
   const [Products, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
@@ -53,14 +53,10 @@ const Page = () => {
     );
   };
 
-  const subtotal = Products.reduce((sum, item) => {
+  const total = Products.reduce((sum, item) => {
     const cartItem = cart.find((cartItem) => cartItem.id === item._id);
-    return cartItem ? sum + item.price * cartItem.quantity : sum;
+    return cartItem ? sum + cartItem.price * cartItem.quantity : sum;
   }, 0);
-
-  const discount = subtotal * 0.2;
-  const deliveryFee = 15;
-  const total = subtotal - discount + deliveryFee;
 
   return (
     <div className="px-3 sm:px-16">
@@ -84,7 +80,7 @@ const Page = () => {
                   </h2>
                   <div className='space-y-2 sm:flex justify-between items-center'>
                     <div>
-                    <p className="text-xl font-semibold">Cost: ${item.price * (cartItem?.quantity || 1)}</p>
+                    <p className="text-xl font-semibold">Cost: ${cartItem?.price * (cartItem?.quantity || 1)}</p>
                       <p>color: {cart[index]?.color}</p>
                     </div>
                     <div className="flex text-2xl items-center bg-gray-200 rounded-full py-1 px-2 sm:py-2 sm:px-6 gap-2 sm:gap-6 w-[120px] justify-between">
@@ -103,15 +99,12 @@ const Page = () => {
           <h2 className="text-xl font-semibold mb-9">Order Summary</h2>
           <div className="flex mb-5 justify-between">
             <p>Subtotal</p>
-            <p>${subtotal.toFixed(2)}</p>
+            <p>${total.toFixed(2)}</p>
           </div>
-          <div className="flex mb-5 justify-between">
-            <p>Discount (20%)</p>
-            <p className='text-red-600'>-${discount.toFixed(2)}</p>
-          </div>
+          
           <div className="flex mb-5 justify-between">
             <p>Delivery Fee</p>
-            <p>${deliveryFee}</p>
+            <p>Free</p>
           </div>
           <hr className="my-4" />
           <div className="flex mb-4 justify-between">

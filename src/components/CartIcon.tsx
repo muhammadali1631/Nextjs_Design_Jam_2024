@@ -8,15 +8,17 @@ interface Props {
   quantity: number;
   color: string;
   add?: string;
+  price: number;
 }
 
 interface CartType {
   id: string;
   quantity: number;
   color: string;
+  price: number
 }
 
-const CartIcon = ({ id, quantity, color, add }: Props) => {
+const CartIcon = ({ id, quantity, color, add, price }: Props) => {
   const [cart, setCart] = useState<CartType[]>([]);
 
   useEffect(() => {
@@ -33,7 +35,7 @@ const CartIcon = ({ id, quantity, color, add }: Props) => {
 
   
 
-  const addCart = ({ id, quantity, color }: Props) => {
+  const addCart = ({ id, quantity, color, price }: Props) => {
     const existingItem = cart.find((item) => item.id === id);
     if (existingItem) {
       setCart(
@@ -45,7 +47,7 @@ const CartIcon = ({ id, quantity, color, add }: Props) => {
       );
 
     } else {
-      setCart([...cart, { id, quantity, color }]);
+      setCart([...cart, { id, quantity, color, price }]);
     }
   };
 
@@ -65,7 +67,7 @@ const CartIcon = ({ id, quantity, color, add }: Props) => {
         <button
           type="button"
           className="w-[80%] px-4 rounded-full py-2 border-[1px] border-black text-white bg-black font-bold hover:text-black hover:bg-white duration-300"
-          onClick={() => addCart({ id, quantity, color })}
+          onClick={() => addCart({ id, quantity, color, price })}
         >
           Add to cart
         </button>
