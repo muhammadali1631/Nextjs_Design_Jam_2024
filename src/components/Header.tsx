@@ -26,10 +26,10 @@ const Header = () => {
   return (
     <>
     <TopBanner/>
-    <nav className="relative flex justify-between md:justify-around items-center px-3 md:px-16 py-4">
+    <nav className="relative flex justify-between md:justify-around items-center px-3 lg:px-12 py-4">
          <div className='flex items-center'>
-         <IoMenu onClick={handleToggle} className={`${attr2} md:hidden text-3xl mr-3`}/>
-         <RxCross2 onClick={handleToggle} className={`${attr} md:hidden text-3xl mr-3`}/>
+         <IoMenu onClick={handleToggle} className={`${attr2} lg:hidden text-3xl mr-3`}/>
+         <RxCross2 onClick={handleToggle} className={`${attr} lg:hidden text-3xl mr-3`}/>
 
         <Link href="/"><Image src={logo} alt='logo' className='w-24 sm:w-32'/></Link>
         </div> 

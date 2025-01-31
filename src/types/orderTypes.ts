@@ -19,5 +19,6 @@ type Product = {
     details: OrderDetails;
     userId: string;
     _createdAt: string; 
+    status: string;
   };
   
