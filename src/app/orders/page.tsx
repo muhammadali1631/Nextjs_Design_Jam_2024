@@ -36,7 +36,7 @@ const Page = () => {
                   {item.status}
                 </span>
               </td>
-              <td className='border border-gray-300 px-4 py-2'>{Data.length}</td>
+              <td className='border border-gray-300 px-4 py-2'>{Data.products.length}</td>
             </tr>
           ))}
         </tbody>
