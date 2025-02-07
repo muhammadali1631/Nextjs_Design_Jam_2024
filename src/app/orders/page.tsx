@@ -8,7 +8,7 @@ const Page = () => {
   const { user } = useUser();
   const [Data, setData] = useState<OrderTypes[]>([])
   const fetchData = async()=>{
-    const data:OrderTypes[] = await client.fetch(`*[_type == 'order']`)
+    const data:OrderTypes[] = await client.fetch(`*[_type == 'order']`, {}, { cache: "no-store" })
     const filterData = data.filter((item)=> item.userId === user?.id)
     setData(filterData)
   }
@@ -36,7 +36,7 @@ const Page = () => {
                   {item.status}
                 </span>
               </td>
-              <td className='border border-gray-300 px-4 py-2'>{Data.length}</td>
+              <td className='border border-gray-300 px-4 py-2'>{Data.products.length}</td>
             </tr>
           ))}
         </tbody>
