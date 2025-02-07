@@ -15,6 +15,7 @@ export default {
               { name: 'quantity', type: 'number', title: 'Quantity' },
               { name: 'color', type: 'string', title: 'Color' },
               { name: 'id', type: 'string', title: 'Product ID' },
+              { name: 'price', type: 'number', title: 'Price' },
             ],
           },
         ],

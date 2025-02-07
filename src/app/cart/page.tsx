@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import { ToastContainer, toast } from 'react-toastify';
 import React, { useEffect, useState } from 'react';
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { SlArrowRight } from "react-icons/sl";
@@ -41,6 +42,7 @@ const Page = () => {
       localStorage.setItem("cartItem", JSON.stringify([]));
       setProducts([]);
     }
+    toast.success('Product has been removed from cart', {autoClose: 2000, theme: 'dark'})
   };
 
   const updateQuantity = (id: string, increment: boolean) => {
@@ -60,6 +62,7 @@ const Page = () => {
 
   return (
     <div className="px-3 sm:px-16">
+      <ToastContainer />
       <h1 className='flex items-center gap-3 ml-1 mt-8'> Home <SlArrowRight /> Cart </h1>
       <h1 className="text-4xl ml-1 mt-10 font-bold mb-5">Your Cart</h1>
 

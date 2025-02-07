@@ -47,7 +47,7 @@ const OrderForm = () => {
   const sentOrder = (data:OrderFormValues)=>{
     const cartData = localStorage.getItem('cartItem');
     const products = cartData ? JSON.parse(cartData) : [];
-
+    if(cartData){
     const newDocument = {
       _type: 'order', 
       userId: user?.id,
@@ -58,14 +58,17 @@ const OrderForm = () => {
     };
     
     client
-      .create(newDocument).then((res) => {
-        console.log('Document updated:', res);
-      })
+      .create(newDocument)
     localStorage.setItem("cartItem", JSON.stringify([]))
+    alert("Order submitted successfully!");
+    }else{
+    alert("Your cart is empty!");
+
+    }
   }
 
   const onSubmit: SubmitHandler<OrderFormValues> = (data) => {
-    alert("Order submitted successfully!");
+    
     sentOrder(data)
     reset();
   };

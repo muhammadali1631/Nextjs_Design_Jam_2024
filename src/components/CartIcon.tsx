@@ -1,4 +1,5 @@
 "use client";
+import { ToastContainer, toast } from 'react-toastify';
 
 import React, { useEffect, useState } from "react";
 import { TbShoppingBagCheck } from "react-icons/tb";
@@ -46,23 +47,28 @@ const CartIcon = ({ id, quantity, color, add, price }: Props) => {
         )
       );
 
+
     } else {
       setCart([...cart, { id, quantity, color, price }]);
     }
+    toast.success('Product has been added to cart', {autoClose: 2000, theme: 'dark'})
   };
-
+  
   const delCart = (id: string) => {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
     if(updatedCart.length === 0){
       localStorage.setItem("cartItem", JSON.stringify([]));
     }
+    
+    toast.success('Product has been removed from cart', {autoClose: 2000, theme: 'dark'})
   };
 
   const isInCart = cart.some((item) => item.id === id);
 
   return (
     <>
+    <ToastContainer />
       {add ? (
         <button
           type="button"
